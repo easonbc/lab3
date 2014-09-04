@@ -69,7 +69,11 @@ void addElement(arrayList * arylstP, void * element)
    {
        int size = arylstP->elementSize * arylstP->arraySize;
        void * array = malloc(2 * size);
-       memcpy(array, arylstP->array, sizeof(arylstP->array));
+       int i;
+       for (i = 0; i < size; i++)
+       {
+           ((char *)array)[i] = ((char*)arylstP->array)[i];
+       }
        free(arylstP->array);
        arylstP->array = array;
        arylstP->arraySize *= 2;
